@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Phone Changer</title>
+    <title>Account</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <style>
@@ -24,11 +24,12 @@
                 $("#message").hide();
 
                 var firstName = $("#firstName").val();
-                var lastName = $("#lastName").val();
                 var email = $("#email").val();
                 var phone = $("#phone").val();
+				var industry = $("#industry").val();
+				
 
-                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
+                if (firstName.length == 0  || email.length == 0 || phone.length == 0 || industry.lenghth == 0 ) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -38,17 +39,17 @@
                         method: event.target.method,
                         data: JSON.stringify({
                             firstName: firstName,
-                            lastName: lastName,
                             email: email,
-                            phone: phone
+                            phone: phone,
+							industry:industry
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
                             $("#firstName").val("");
-                            $("#lastName").val("");
                             $("#email").val("");
                             $("#phone").val("");
+							$("#industry").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
@@ -67,7 +68,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Saifullah saifi</a>
+                <a class="navbar-brand" href="/">Saifullah saifi - Account</a>
             </div>
         </div>
     </nav>
@@ -80,13 +81,10 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="firstName">First Name</label>
+                        <label for="firstName"> Name</label>
                         <input type="text" class="form-control" id="firstName" placeholder="For verification" required>
                     </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="For verification" required>
-                    </div>
+                   
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="For verification" required>
@@ -94,6 +92,10 @@
                     <div class="form-group">
                         <label for="phone">Mobile</label>
                         <input type="tel" class="form-control" id="phone" placeholder="New Phone Number" required>
+                    </div>
+					<div class="form-group">
+                        <label for="phone">Industry</label>
+                        <input type="text" class="form-control" id="industry" placeholder="New Industry" required>
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -106,7 +108,7 @@
                         <span class="sr-only">Error:</span>
                         <span id="errorMessage"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update Phone Number</button>
+                    <button type="submit" class="btn btn-primary">Update Account</button>
                 </div>
             </div>
         </form>

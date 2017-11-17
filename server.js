@@ -14,12 +14,12 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.Account SET Phone = $1,Industry = $3  WHERE LOWER(Name) = LOWER($2) AND LOWER(SFId__c)= LOWER($4)',
-            [req.body.phone.trim(), req.body.Name.trim(),req.body.industry.trim(),req.body.SFId__c.trim() ],
+            'UPDATE salesforce.Account SET Phone = $1,Industry = $3  WHERE LOWER(Name) = LOWER($2)',
+            [req.body.phone.trim(), req.body.firstName.trim(),req.body.industry.trim() ],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
-                  conn.query('INSERT INTO salesforce.Account (Phone, Name, Industry,SFId__c) VALUES ($1,  $2, $3, $4)',
-                  [req.body.phone.trim(), req.body.Name.trim(),req.body.industry.trim(),req.body.SFId__c.trim()],
+                  conn.query('INSERT INTO salesforce.Account (Phone, Name, Industry) VALUES ($1,  $2, $3)',
+                  [req.body.phone.trim(), req.body.firstName.trim(),req.body.industry.trim() ],
 				  function(err, result) {
                     done();
                     if (err) {

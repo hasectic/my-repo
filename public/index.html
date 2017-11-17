@@ -23,13 +23,12 @@
 
                 $("#message").hide();
 
-                var Name = $("#Name").val();
+                var firstName = $("#firstName").val();
                 var phone = $("#phone").val();
 				var industry = $("#industry").val();
-				var SFId = $("#SFId").val();
 				
 
-                if (Name.length == 0   || phone.length == 0 || industry.lenghth == 0 ) {
+                if (firstName.length == 0   || phone.length == 0 || industry.lenghth == 0 ) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -38,18 +37,16 @@
                         url: event.target.action,
                         method: event.target.method,
                         data: JSON.stringify({
-                            Name: Name,
+                            firstName: firstName,
                             phone: phone,
-							industry:industry,
-							SFId:SFId;
+							industry:industry
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
-                            $("#Name").val("");
+                            $("#firstName").val("");
                             $("#phone").val("");
 							$("#industry").val("");
-							$("#SFId").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
@@ -81,8 +78,8 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="name"> Name</label>
-                        <input type="text" class="form-control" id="Name" placeholder="For verification" required>
+                        <label for="firstName"> Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="For verification" required>
                     </div>
                    
                 
@@ -93,10 +90,6 @@
 					<div class="form-group">
                         <label for="phone">Industry</label>
                         <input type="text" class="form-control" id="industry" placeholder="New Industry" required>
-                    </div>
-					<div class="form-group">
-                        <label for="phone">SFId</label>
-                        <input type="text" class="form-control" id="SFId" placeholder="existing ID" required>
                     </div>
                 </div>
                 <div class="panel-footer">

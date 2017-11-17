@@ -1,5 +1,5 @@
 {
-  "name": "update Saifi account",
+  "name": "Phone Change",
   "description": "Heroku Connect Sample App - Phone Change",
   "repository": "https://github.com/hasectic/herokusaifi",
   "success_url": "/setup.html",

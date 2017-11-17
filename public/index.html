@@ -24,12 +24,11 @@
                 $("#message").hide();
 
                 var firstName = $("#firstName").val();
-                var email = $("#email").val();
                 var phone = $("#phone").val();
 				var industry = $("#industry").val();
 				
 
-                if (firstName.length == 0  || email.length == 0 || phone.length == 0 || industry.lenghth == 0 ) {
+                if (firstName.length == 0   || phone.length == 0 || industry.lenghth == 0 ) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -39,7 +38,6 @@
                         method: event.target.method,
                         data: JSON.stringify({
                             firstName: firstName,
-                            email: email,
                             phone: phone,
 							industry:industry
                         }),
@@ -47,7 +45,6 @@
                         dataType: "json",
                         success: function(data) {
                             $("#firstName").val("");
-                            $("#email").val("");
                             $("#phone").val("");
 							$("#industry").val("");
                             $("#messageMessage").text("Record updated!");
@@ -85,10 +82,7 @@
                         <input type="text" class="form-control" id="firstName" placeholder="For verification" required>
                     </div>
                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="For verification" required>
-                    </div>
+                
                     <div class="form-group">
                         <label for="phone">Mobile</label>
                         <input type="tel" class="form-control" id="phone" placeholder="New Phone Number" required>
